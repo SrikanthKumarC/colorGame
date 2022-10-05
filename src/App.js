@@ -29,6 +29,7 @@ function App() {
       notifyFalse();
     }
   };
+  const [again, setAgain] = useState(false);
   useEffect(() => {
     const actualColor = getColorHash();
     setColor(actualColor);
@@ -38,7 +39,7 @@ function App() {
         () => Math.random() - 0.5
       )
     );
-  }, []);
+  }, [again]);
   return (
     <div className={`App`}>
       <div className="games">
@@ -55,6 +56,7 @@ function App() {
           })}
           <Toaster />
         </div>
+        <button className="try" onClick={() => setAgain(!again)}>✨ Try New Color</button>
       </div>
       <footer className="footer" style={{color: '#fff'}}>
         Made with 🤍 by <a style={{color: '#fff'}} href="https://www.linkedin.com/in/c-srikanth/" target="_blank" rel="noreferrer">Srikanth Cheruku</a>
