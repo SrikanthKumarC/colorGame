@@ -58,7 +58,7 @@ function App() {
         </div>
       </div>
       <footer className="footer" style={{color: '#fff'}}>
-        Made with 🤍 by <a style={{color: '#fff'}} href="https://www.linkedin.com/in/c-srikanth/" target="_blank">Srikanth Cheruku</a>
+        Made with 🤍 by <a style={{color: '#fff'}} href="https://www.linkedin.com/in/c-srikanth/" target="_blank" rel="noreferrer">Srikanth Cheruku</a>
       </footer>
     </div>
   );
