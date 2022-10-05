@@ -1,24 +1,9 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
+import { notifyFalse, notifyTrue, getRandomColorHash } from "./lib/utils";
 
-const notifyTrue = () =>
-  toast("Correct", {
-    icon: "😉",
-  });
-const notifyFalse = () =>
-  toast("Wrong", {
-    icon: "😔",
-  });
 function App() {
-  const getColorHash = () => {
-    var letters = "0123456789ABCDEF";
-    var color = "";
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  };
 
   const [arr, setArr] = useState([]);
   const [color, setColor] = useState("");
@@ -31,11 +16,11 @@ function App() {
   };
   const [again, setAgain] = useState(false);
   useEffect(() => {
-    const actualColor = getColorHash();
+    const actualColor = getRandomColorHash();
     setColor(actualColor);
 
     setArr(
-      [actualColor, getColorHash(), getColorHash(), getColorHash()].sort(
+      [actualColor, getRandomColorHash(), getRandomColorHash(), getRandomColorHash()].sort(
         () => Math.random() - 0.5
       )
     );
@@ -43,7 +28,7 @@ function App() {
   return (
     <div className={`App`}>
       <div className="games">
-      <h1 style={{color: '#fff'}}>Guess the color</h1>
+        <h1 style={{ color: "#fff" }}>Guess the color</h1>
         <div className="color" style={{ background: `#${color}` }}></div>
         <div className="options">
           {console.log(arr)}
@@ -56,10 +41,20 @@ function App() {
           })}
           <Toaster />
         </div>
-        <button className="try" onClick={() => setAgain(!again)}>✨ Try New Color</button>
+        <button className="try" onClick={() => setAgain(!again)}>
+          ✨ Try New Color
+        </button>
       </div>
-      <footer className="footer" style={{color: '#fff'}}>
-        Made with 🤍 by <a style={{color: '#fff'}} href="https://www.linkedin.com/in/c-srikanth/" target="_blank" rel="noreferrer">Srikanth Cheruku</a>
+      <footer className="footer" style={{ color: "#fff" }}>
+        Made with 🤍 by{" "}
+        <a
+          style={{ color: "#fff" }}
+          href="https://www.linkedin.com/in/c-srikanth/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Srikanth Cheruku
+        </a>
       </footer>
     </div>
   );
